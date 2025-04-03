@@ -1,27 +1,3 @@
-:::thinking
-I'll create two separate README files:
-
-1. Main README.md - This will be at the root of the project and include installation instructions, general usage, and reference the github repo at sam1am/cli-viz.
-
-2. visualizers/README.md - This will provide detailed instructions on how to create additional visualizers, with examples and best practices.
-
-For the main README:
-- Installation instructions
-- Basic usage information
-- Controls
-- Credit/license
-- Link to visualizer documentation
-
-For the visualizers README:
-- How to create a visualizer class
-- Required methods and their purposes
-- Examples of using audio data
-- Best practices
-- Example of a simple template visualizer
-:::
-# README.md (Main project README)
-
-```markdown
 # CLI-Viz: Terminal Audio Visualizer
 
 ![CLI-Viz Demo](https://github.com/sam1am/cli-viz/raw/main/assets/demo.gif)

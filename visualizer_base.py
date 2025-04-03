@@ -39,16 +39,32 @@ class VisualizerBase:
     
     def get_color_pair(self, stdscr, r, g, b):
         """Helper method to get color pair for RGB values"""
-        # Map r,g,b (0-255) to a predefined color pair
-        # Convert to 0-5 range for r,g,b
-        r_idx = min(5, r * 6 // 256)
-        g_idx = min(5, g * 6 // 256)
-        b_idx = min(5, b * 6 // 256)
-        
-        # Calculate color index
-        color_idx = 36 * r_idx + 6 * g_idx + b_idx + 1
-        
-        return curses.color_pair(color_idx)
+        # Check if we're in limited color mode
+        if curses.COLORS < 256:
+            # Map RGB to one of the 8 basic colors
+            # Basic approximation: use brightness to choose between colors
+            brightness = (r + g + b) / 3
+            if brightness < 85:  # Dark
+                if r > g and r > b: return curses.color_pair(1)  # Red
+                if g > r and g > b: return curses.color_pair(2)  # Green
+                if b > r and b > g: return curses.color_pair(4)  # Blue
+                return curses.color_pair(0)  # Black
+            else:  # Bright
+                if r > g and r > b: return curses.color_pair(1) | curses.A_BOLD  # Bright Red
+                if g > r and g > b: return curses.color_pair(2) | curses.A_BOLD  # Bright Green
+                if b > r and b > g: return curses.color_pair(4) | curses.A_BOLD  # Bright Blue
+                if r > 200 and g > 200 and b > 200: return curses.color_pair(7) | curses.A_BOLD  # White
+                return curses.color_pair(3)  # Yellow
+        else:
+            # Original 256-color logic
+            r_idx = min(5, r * 6 // 256)
+            g_idx = min(5, g * 6 // 256)
+            b_idx = min(5, b * 6 // 256)
+            
+            # Calculate color index
+            color_idx = 36 * r_idx + 6 * g_idx + b_idx + 1
+            
+            return curses.color_pair(color_idx)
     
     def hsv_to_color_pair(self, stdscr, h, s, v):
         """Helper method to get color pair for HSV values"""

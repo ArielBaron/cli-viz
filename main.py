@@ -101,30 +101,43 @@ class TerminalAudioVisualizer:
         curses.start_color()
         curses.use_default_colors()
         
-        # Define color pairs (we'll create lots of them for smooth gradients)
-        color_count = 216  # 6x6x6 color cube
-        
-        # Create color pairs
-        for i in range(color_count):
-            # Convert index to r,g,b (0-5 range for each)
-            r = (i // 36) % 6
-            g = (i // 6) % 6
-            b = i % 6
+        # Check how many colors the terminal supports
+        if curses.COLORS < 256:
+            # Limited color mode - just set up basic color pairs
+            color_count = min(curses.COLORS - 1, 7)  # Reserve 0 for default
+            for i in range(color_count):
+                curses.init_pair(i + 1, i + 1, -1)  # -1 means default background
+        else:
+            # Full color mode - create color cube
+            color_count = 216  # 6x6x6 color cube
             
-            # Scale to 0-1000 range for curses
-            r_curses = int((r * 1000) / 5)
-            g_curses = int((g * 1000) / 5)
-            b_curses = int((b * 1000) / 5)
-            
-            # Define color and color pair
-            curses.init_color(i + 16, r_curses, g_curses, b_curses)
-            curses.init_pair(i + 1, i + 16, -1)  # -1 means default background
+            # Create color pairs
+            for i in range(color_count):
+                # Convert index to r,g,b (0-5 range for each)
+                r = (i // 36) % 6
+                g = (i // 6) % 6
+                b = i % 6
+                
+                # Scale to 0-1000 range for curses
+                r_curses = int((r * 1000) / 5)
+                g_curses = int((g * 1000) / 5)
+                b_curses = int((b * 1000) / 5)
+                
+                # Define color and color pair
+                curses.init_color(i + 16, r_curses, g_curses, b_curses)
+                curses.init_pair(i + 1, i + 16, -1)  # -1 means default background
     
     def run(self, stdscr):
         # Setup curses
         curses.curs_set(0)  # Hide cursor
-        if curses.has_colors() and curses.can_change_color():
+        
+        # Check terminal color support
+        has_color = curses.has_colors()
+        can_change = curses.can_change_color() if has_color else False
+        
+        if has_color:
             self.setup_colors(stdscr)
+        
         stdscr.timeout(0)  # Non-blocking input
         stdscr.clear()
         

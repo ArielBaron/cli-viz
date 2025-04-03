@@ -32,6 +32,8 @@ A powerful terminal-based audio visualizer with a plugin system that renders bea
 8. **Neural Dreamscape**: Abstract visualization resembling neural networks that pulse and evolve with audio input
    ![Neural Dreamscape](previews/neural_dreamscape.gif)
 
+9. **Neural Dreamscape Lite**: Optimized version of Neural Dreamscape designed specifically for low-end devices like Raspberry Pi Zero W
+
 ## Features
 
 - Modular plugin system for visualizers

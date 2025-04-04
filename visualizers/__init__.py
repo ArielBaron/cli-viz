@@ -12,6 +12,7 @@ from .fractal_universe_lite import FractalUniverseLiteVisualizer
 from .stick_figure import StickFigureVisualizer
 from .starfield_warp import StarfieldWarpVisualizer
 from .cosmic_pulsar import CosmicPulsarVisualizer
+from .guitar_tuner import GuitarTunerVisualizer
 
 # Dictionary mapping visualizer names to classes
 visualizers = {
@@ -28,4 +29,5 @@ visualizers = {
     "stick": StickFigureVisualizer,
     "starfield": StarfieldWarpVisualizer,
     "pulsar": CosmicPulsarVisualizer,
+    "tuner": GuitarTunerVisualizer,
 }

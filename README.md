@@ -6,31 +6,31 @@ A powerful terminal-based audio visualizer with a plugin system that renders bea
 
 1. **Spectrum Bars**: Classic frequency spectrum analyzer with colorful bars
    - Controls: **b/B** - Increase/decrease bass boost
-   ![Spectrum Bars](previews/bars.gif)
+![Spectrum Bars](previews/bars.gif)
 
 2. **Wave**: Audio-reactive sine wave that changes with different frequencies
-   ![Wave](previews/wave.gif)
+![Wave](previews/wave.gif)
 
 3. **Circle**: Circular spectrum visualization with pulsating rings
-   ![Circle](previews/circle.gif)
+![Circle](previews/circle.gif)
 
 4. **Particles**: Particle system that responds to beats and energy in the music
    - Controls: **p/P** - Increase/decrease maximum number of particles
-   ![Particles](previews/particles.gif)
+![Particles](previews/particles.gif)
 
 5. **Flame**: A realistic flame that dances to your music
    - Controls: **w/W** - Increase/decrease flame width
    - Controls: **h/H** - Increase/decrease flame height
-   ![Flame](previews/flame.gif)
+![Flame](previews/flame.gif)
 
 6. **Fractal Universe**: Hypnotic fractal patterns that evolve and respond to audio frequencies
-   ![Fractal Universe](previews/fractal_universe.gif)
+![Fractal Universe](previews/fractal_universe.gif)
 
 7. **Matrix Rain**: Digital rain effect inspired by The Matrix, with characters that flow and respond to the music
-   ![Matrix Rain](previews/matrix_rain.gif)
+![Matrix Rain](previews/matrix_rain.gif)
 
 8. **Neural Dreamscape**: Abstract visualization resembling neural networks that pulse and evolve with audio input
-   ![Neural Dreamscape](previews/neural_dreamscape.gif)
+![Neural Dreamscape](previews/neural_dreamscape.gif)
 
 9. **Neural Dreamscape Lite**: Optimized version of Neural Dreamscape designed specifically for low-end devices like Raspberry Pi Zero W
 

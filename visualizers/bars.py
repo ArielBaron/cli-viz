@@ -1,9 +1,8 @@
-from visualizer_base import VisualizerBase
 import curses
 
-class BarsVisualizer(VisualizerBase):
+class BarsVisualizer:
     def __init__(self):
-        super().__init__(name="Spectrum Bars")
+        self.name = "Spectrum Bars"
         self.bars = 50
         self.boost = 1.5
 

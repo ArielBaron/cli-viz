@@ -1,9 +1,14 @@
+import sys
+import os
 import numpy as np
 import pyaudio
 import curses
 import time
 
 from visualizers.bars import BarsVisualizer
+
+# --- Suppress ALSA warnings ---
+sys.stderr = open(os.devnull, 'w')
 
 class TerminalAudioVisualizer:
     def __init__(self):
@@ -52,8 +57,6 @@ class TerminalAudioVisualizer:
         stdscr.timeout(0)
         stdscr.erase()
 
-        self.visualizer.setup()
-
         try:
             while True:
                 try:
@@ -83,7 +86,6 @@ class TerminalAudioVisualizer:
             self.stream.stop_stream()
             self.stream.close()
             self.p.terminate()
-
 
 if __name__ == "__main__":
     visualizer = TerminalAudioVisualizer()
